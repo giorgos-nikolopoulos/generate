@@ -328,6 +328,10 @@ func (g *Generator) getSchemaName(keyName string, schema *Schema) string {
 	return fmt.Sprintf("Anonymous%d", g.anonCount)
 }
 
+func (g *Generator) NoStructs() bool {
+	return len(g.Structs) == 0
+}
+
 // getGolangName strips invalid characters out of golang struct or field names.
 func getGolangName(s string) string {
 	buf := bytes.NewBuffer([]byte{})

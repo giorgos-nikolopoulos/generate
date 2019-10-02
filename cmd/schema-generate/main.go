@@ -55,7 +55,7 @@ func main() {
 
 	var w io.Writer = os.Stdout
 
-	if *o != "" {
+	if *o != "" && !g.NoStructs() {
 		w, err = os.Create(*o)
 
 		if err != nil {
@@ -64,5 +64,7 @@ func main() {
 		}
 	}
 
-	generate.Output(w, g, *p)
+	if !g.NoStructs() {
+		generate.Output(w, g, *p)
+	}
 }
